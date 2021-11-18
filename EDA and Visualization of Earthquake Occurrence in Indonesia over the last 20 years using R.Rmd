@@ -7,7 +7,9 @@ output:
   html_document: default
 ---
 
-The EDA and the data visualization will be used to have an overview on earthquake occurrences, specifically in Indonesia. The dataset was gathered from (https://earthquake.usgs.gov/earthquakes/search/), which collects data on earthquakes that occur around the world. The data ranges from 2000 to 2020.
+The EDA and the data visualization will be used to have an overview on earthquake occurrences, specifically in Indonesia.
+The dataset was gathered from (https://earthquake.usgs.gov/earthquakes/search/), which collects data on earthquakes that occur around the world. 
+The data ranges from 2000 to 2020.
 
 import of the needed librararies.
 
@@ -20,7 +22,8 @@ library(ggplot2)
 library(plotly)
 ```
 
-The majority of the data in the dataset comes from earthquakes recorded in ASEAN countries. Specifying the coordinates of the Indonesian territory is required, as a way to filter out places that doesn't fit in our objective.
+The majority of the data in the dataset comes from earthquakes recorded in ASEAN countries. 
+Specifying the coordinates of the Indonesian territory is required, as a way to filter out places that doesn't fit in our objective.
 
 ```{r}
 #Loading the dataset
@@ -74,7 +77,8 @@ A check on whether the data has missing values or not.
 eq_INA %>% is.na() %>% colSums() %>% sort(decreasing = TRUE)
 ```
 
-Since the column of year, month, day, latitude, longitude, depth, mag, and date has zero value meaning that there are no missing value on the particular column which will be used.
+Since the column of year, month, day, latitude, longitude, depth, mag, and date have zero value, 
+means that there were no missing values on any the particular column which will be used.
 
 # Earthquake classification based on magnitude
 
@@ -129,7 +133,9 @@ eq_INA %>%
 ggsave(file="Earthquake distribution based on magnitude.png", width=10, height=5)
 ```
 
-According to the bar chart, there are over 4245 minor earthquakes, 38092 light earthquakes, and 4163 moderate earthquakes occurred in the Indonesian territory between 2000 and 2020. The most concerning thing is, that there were 319 strong earthquake, 42 major, and 4 great ones. 
+According to the bar chart, there are over 4245 minor earthquakes, 38092 light earthquakes, 
+and 4163 moderate earthquakes occurred in the Indonesian territory between 2000 and 2020. 
+The most concerning thing is, that there were 319 strong earthquake, 42 major, and 4 great ones. 
 The magnitude classes above 6 - "strong", tend to cause significant damage with high radius expansion, and higher chances of an aftershock. 
 Thus, we need to know when these earthquakes occurred, to understand them more.
 
@@ -157,11 +163,15 @@ eq_INA %>%
   ggsave(file="Earthquake distribution per year.png", width = 10, height = 5)
 ```
 
-The bar chart of Fig 2. clearly displays that there are more than 1000 earthquakes occured in Indonesia every year. There was also a significant increase in the number of earthquakes in 2005, with over 5110 earthquakes occurring on that year alone. The 2005 earthquake doubled the number of earthquakes recorded from previous year in 2004 consecutively.
+The bar chart of Fig 2. clearly displays that there are more than 1000 earthquakes occured in Indonesia every year. 
+There was also a significant increase in the number of earthquakes in 2005, with over 5110 earthquakes occurring on that year alone. 
+The 2005 earthquake doubled the number of earthquakes recorded from previous year in 2004 consecutively.
 
 Such pattern suggests that,
 
-a hypothesis for why such a phenomenon could occur is that there was an increase in the number of minor earthquakes preceding the aftershock of the major earthquake. Here, a scatter plot is needed to gather more information about the earthquake distribution based on the magnitude scale and time period.
+a hypothesis for why such a phenomenon could occur is that there was,
+an increase in the number of minor earthquakes preceding the aftershock of the major earthquake. 
+Here, a scatter plot is needed to gather more information about the earthquake distribution based on the magnitude scale and time period.
 
 
 ```{r}
@@ -176,7 +186,8 @@ eq_INA %>%
 ggsave(file="Scatter plot of earthquakes distribution based on magnitude in 2000-2020.png", width = 10, height = 5)
 ```
 
-The scatter plot shows that there were three major earthquakes between 2004 and 2007. The consecutive number of these seismic activities of such magnitude, in a short time frame, will require extra attention.
+The scatter plot shows that there were three major earthquakes between 2004 and 2007. 
+The consecutive number of these seismic activities of such magnitude, in a short time frame, will require extra attention.
 
 This massive "chain reaction"  throughout 2004 - 2007, is the primary cause of the great increase in the number of earthquakes.
 
@@ -196,7 +207,10 @@ eq_INA %>%
 ggsave(file="Earthquake distribution based on magnitude in 2004-2007.png", width = 10, height = 8)
 ```
 
-From the bar chart, the great earthquake preceding December 2004 earthquake, and the second great earthquake in March 2005 caused a significant increase in light earthquakes in the same year. To get more information about the distribution of earthquakes per month, we need to look at the number of earthquakes that occurred in each sequence of months from 2004 to 2007.
+From the bar chart, the great earthquake preceding December 2004 earthquake, 
+and the second great earthquake in March 2005 caused a significant increase in light earthquakes in the same year. 
+To get more information about the distribution of earthquakes per month, 
+we need to look at the number of earthquakes that occurred in each sequence of months from 2004 to 2007.
 
 ```{r}
 eq_INA %>% 
@@ -216,13 +230,21 @@ ggsave(file="Earthquake distribution based on magnitude per month in 2004-2007.p
 
 
 Therefore, note the increase and decrease of number of earthquakes in each month from 2004 to 2007 in the bar chart in Fig. 5. 
-Between December 2004 and April 2005, there were a large number of earthquakes. The earthquakes occurred prior to the great earthquake of 9.1 magnitude in 2004, which resulted in the lesser earthquake on the following month.
+Between December 2004 and April 2005, there were a large number of earthquakes. 
+The earthquakes occurred prior to the great earthquake of 9.1 magnitude in 2004, 
+which resulted in the lesser earthquake on the following month.
 
-There was also an increase in the number of earthquakes prior to the second great earthquake in March 2005. The previous hypothesis about the increasing number of minor earthquakes being caused by major earthquakes appears to be correct. According to the earthquake data from December 2004 to April 2005, the great earthquake that occurred a month before caused a significant increase in the number of earthquakes on the following month.
+There was also an increase in the number of earthquakes prior to the second great earthquake in March 2005. 
+The previous hypothesis about the increasing number of minor earthquakes being caused by major earthquakes appears to be correct. 
+According to the earthquake data from December 2004 to April 2005, the great earthquake that occurred a month before,
+caused a significant increase in the number of earthquakes on the following month.
 
-The same phenomenon also happened when the third great earthquake occurred in September 2007. However, the number of earthquakes did not increase as rapidly as it did during the previous great earthquake during the same time period.
+The same phenomenon also happened when the third great earthquake occurred in September 2007. 
+However, the number of earthquakes did not increase as rapidly as it did during the previous great earthquake during the same time period.
 
-In relation to the previous number of earthquakes each month every year, an exploration of the correlation between magnitude and depth of earthquake is useful. The following scatter plot will show the relation between magnitude and depth regarding the occurred earthquakes.
+In relation to the previous number of earthquakes each month every year, 
+an exploration of the correlation between magnitude and depth of earthquake is useful. 
+The following scatter plot will show the relation between magnitude and depth regarding the occurred earthquakes.
 
 ```{r}
 #Relationship between mag and depth
@@ -239,15 +261,24 @@ eq_INA %>%
 ggsave(file="Scatter plot of earthquake distribution based on magnitude and depth per year.png", width = 10, height = 5)
 ```
 
-The relationship between mag and depth is inverse, as exhibited by the scatter plot from Fig. 6. It means that, as the magnitude increases, the depth decreases. The large magnitude earthquake is most likely to have occurred at a shallow depth. 
-This conclusion seems to be correct because the previous great earthquake, has happened at a depth of less than 50 kilometers beneath the earth's surface.
+The relationship between mag and depth is inverse, as exhibited by the scatter plot from Fig. 6. 
+It means that, as the magnitude increases, the depth decreases. 
+The large magnitude earthquake is most likely to have occurred at a shallow depth. 
+This conclusion seems to be correct because the previous great earthquake, 
+has happened at a depth of less than 50 kilometers beneath the earth's surface.
 
 Conclusion
 
-1.	From 2000 to 2020, there were 4245 minor earthquakes, 38092 light earthquakes, and 4163 moderate earthquakes on Indonesian territory. Despite this, the most notable earthquakes are the "major" and "great" earthquakes with the "major" occurred 52 times, and the "great" occurred 4 times.
+1.	From 2000 to 2020, there were 4245 minor earthquakes, 38092 light earthquakes, 
+and 4163 moderate earthquakes on Indonesian territory.
+Despite this, the most notable earthquakes are the "major" and "great" earthquakes with the "major" occurred 52 times, and the "great" occurred 4 times.
 
-2.	Every year, more than 1000 earthquakes with varying magnitudes occured in Indonesia, ranging from "minor" to "great" earthquakes, as was classsified.
+2.	Every year, more than 1000 earthquakes with varying magnitudes occured in Indonesia, 
+ranging from "minor" to "great" earthquakes, as was classsified.
 
-3.	The large number of earthquakes that occurred in 2005 were caused by aftershocks from the previous year's great earthquake in December 2004 and March 2005. Because of the two great earthquakes, the number of earthquakes in 2005 has increase to almost the double of the previous year, especially for the minor earthquakes.
+3.	The large number of earthquakes that occurred in 2005,
+ were caused by aftershocks from the previous year's great earthquake in December 2004 and March 2005. 
+ Because of the two great earthquakes, the number of earthquakes in 2005 has increased to almost the double of the previous year,
+ especially for the minor earthquakes.
 
 4.	The higher the magnitude based on "Richter scale" of earthquakes, the shallower the depth was.
