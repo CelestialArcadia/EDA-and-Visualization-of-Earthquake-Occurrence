@@ -32,6 +32,7 @@ eq_INA = df_eq %>%
 eq_INA
 
 #changing the time column format
+
 eq_INA = eq_INA %>% 
     separate(time,into = c("year","month","day"),sep = "-") %>% 
     separate(day,into = c("day","time"),sep = "T") %>%
@@ -64,7 +65,7 @@ eq_INA = eq_INA %>%
 eq_INA
 write.csv(eq_INA, "~/Dataset/Treated/EQ Indonesia 2000-2020.csv")
 
-1. counting the number of earthquake based on its level of magnitude and year.
+# counting the number of earthquake based on its level of magnitude and year.
 
 eq_INA %>% 
   group_by(mag_class) %>% 
